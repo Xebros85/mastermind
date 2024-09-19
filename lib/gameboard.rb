@@ -2,7 +2,7 @@
 
 # Gameboard class
 
-class GameBoard
+class GameBoard # rubocop:todo Style/Documentation
   attr_accessor :guesses
 
   def initialize
@@ -16,7 +16,8 @@ class GameBoard
   def display_board
     puts "\nCurrent Guesses:"
     @guesses.each do |entry|
-      puts "Guess: #{entry[:guess].join(', ')} -> Correct positions #{entry[:result][:correct_positions]}, Correct Colors: #{entry[:result][:correct_colors]}"
+      puts "Guess: #{entry[:guess].join(', ')}
+       -> Correct positions #{entry[:result][:correct_positions]}, Correct Colors: #{entry[:result][:correct_colors]}"
     end
   end
 end

@@ -2,7 +2,7 @@
 
 # Player Class
 
-class Player
+class Player # rubocop:todo Style/Documentation
   def make_guess
     loop do
       puts "Enter your guess (#{CODE_LENGTH} colors from #{COLORS.join(', ')}):"

@@ -5,7 +5,7 @@
 COLORS = %w[r b g y o p].freeze
 CODE_LENGTH = 4
 
-class Computer
+class Computer # rubocop:todo Style/Documentation
   attr_reader :secret_code
 
   def initialize
@@ -16,7 +16,7 @@ class Computer
     Array.new(CODE_LENGTH) { COLORS.sample }
   end
 
-  def check_guess(guess)
+  def check_guess(guess) # rubocop:todo Metrics/MethodLength
     correct_positions = 0
     correct_colors = 0
 

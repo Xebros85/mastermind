@@ -5,7 +5,7 @@ require_relative 'lib/computer'
 require_relative 'lib/gameboard'
 require_relative 'lib/player'
 
-class Game
+class Game # rubocop:todo Style/Documentation
   def initialize
     @player = Player.new
     @computer = Computer.new
@@ -15,7 +15,7 @@ class Game
     @secret_code = @computer.generate_code
   end
 
-  def play
+  def play # rubocop:todo Metrics/MethodLength
     until game_over?
       @game_board.display_board
       guess = @player.make_guess
@@ -32,7 +32,8 @@ class Game
   private
 
   def game_over?
-    @turns >= @max_turns || (@game_board.guesses.last && @game_board.guesses.last[:result][:correct_positions] == Computer::CODE_LENGTH)
+    @turns >= @max_turns ||
+      (@game_board.guesses.last && @game_board.guesses.last[:result][:correct_positions] == Computer::CODE_LENGTH)
   end
 end
 
