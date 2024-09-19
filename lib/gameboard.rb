@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Gameboard class
 
 class GameBoard
   attr_accessor :guesses
@@ -16,5 +19,4 @@ class GameBoard
       puts "Guess: #{entry[:guess].join(', ')} -> Correct positions #{entry[:result][:correct_positions]}, Correct Colors: #{entry[:result][:correct_colors]}"
     end
   end
-    
 end

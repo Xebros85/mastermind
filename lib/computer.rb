@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 # Computer class
 
-COLORS = %w[r b g y o p]
+COLORS = %w[r b g y o p].freeze
 CODE_LENGTH = 4
 
 class Computer
@@ -22,11 +24,11 @@ class Computer
     guess_copy = guess.dup
 
     guess.each_with_index do |color, index|
-      if color == secret_copy[index]
-        correct_positions += 1
-        secret_copy[index] = nil
-        guess_copy[index] = nil
-      end
+      next unless color == secret_copy[index]
+
+      correct_positions += 1
+      secret_copy[index] = nil
+      guess_copy[index] = nil
     end
 
     guess_copy.each do |color|
@@ -36,7 +38,6 @@ class Computer
       end
     end
 
-    { correct_positions: correct_positions, correct_colors: correct_colors}
-
+    { correct_positions: correct_positions, correct_colors: correct_colors }
   end
 end
