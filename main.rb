@@ -1,40 +1,26 @@
 # frozen_string_literal: true
 
 # Game class and main gameplay
-require_relative 'lib/computer'
-require_relative 'lib/gameboard'
-require_relative 'lib/player'
+require_relative 'lib/controller'
 
-class Game # rubocop:todo Style/Documentation
-  def initialize
-    @player = Player.new
-    @computer = Computer.new
-    @game_board = GameBoard.new
-    @turns = 0
-    @max_turns = 12
-    @secret_code = @computer.generate_code
-  end
-
-  def play # rubocop:todo Metrics/MethodLength
-    until game_over?
-      @game_board.display_board
-      guess = @player.make_guess
-      result = @computer.check_guess(guess)
-      @game_board.record_guess(guess, result)
-      @turns += 1
-      if result[:correct_positions] == Computer::CODE_LENGTH
-        puts "You've cracked the code!!"
-        break
-      end
-    end
-  end
-
-  private
-
-  def game_over?
-    @turns >= @max_turns ||
-      (@game_board.guesses.last && @game_board.guesses.last[:result][:correct_positions] == Computer::CODE_LENGTH)
-  end
+def instructions
+  puts "Welcome to Mastermind!\n"
+  puts
+  puts 'You can be either the codemaker or codebreaker:'
+  puts
+  puts 'CodeMaker: You set a code for the computer to guess.'
+  puts "CodeBreaker: You must break the code.\n"
+  puts
+  puts "There are hints along the way so be on the lookout.\n"
+  puts
+  puts 'The objective is to guess the code in the fewest guesses.'
+  puts
+  puts "You win if you either crack the computer's code OR if you stump the computer with a code of your own!\n"
+  puts
+  puts 'Good luck!!'
+  puts
 end
 
-Game.new.play
+instructions
+Controller.new
+Controller.new.play
