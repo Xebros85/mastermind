@@ -1,3 +1,4 @@
+require 'pry'
 require_relative 'script'
 require_relative 'player'
 require_relative 'computer'
@@ -20,6 +21,8 @@ class Controller
   end
 
   def play
+    @script.instructions
+    @player.set_name
     loop do
       game_setup
       break unless @script.play_again?
@@ -28,7 +31,6 @@ class Controller
 
   # Starting the game
   def game_setup
-    @player.set_name
     game_mode
     if @mode == 1
       codebreaker
@@ -77,7 +79,7 @@ class Controller
     @code = @player.make_code
 
     while @turns <= @max_turns
-      @computer.debug
+      # @computer.debug
       @computer.make_guess
       @guess = @turns == 1 ? @computer.initial_guess : @computer.final_array
       @computer.temp.clear if @turns > 1

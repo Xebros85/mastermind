@@ -50,7 +50,7 @@ class Script
         end_game
         exit
       else
-        print "Invalid input. Please enter either 'y' or 'n'."
+        print "Invalid input. Please enter either 'y' or 'n'.\n\n"
       end
     end
   end
@@ -87,5 +87,23 @@ class Script
       print '.'
       sleep(0.5)
     end
+  end
+
+  def instructions
+    puts "Welcome to Mastermind!\n"
+    puts
+    puts 'You can be either the codemaker or codebreaker:'
+    puts
+    puts 'CodeMaker: You set a code for the computer to guess.'
+    puts "CodeBreaker: You must break the code.\n"
+    puts
+    puts "There are hints along the way so be on the lookout.\n"
+    puts
+    puts 'The objective is to guess the code in the fewest guesses.'
+    puts
+    puts "You win if you either crack the computer's code OR if you stump the computer with a code of your own!\n"
+    puts
+    puts 'Good luck!!'
+    puts
   end
 end
